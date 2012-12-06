@@ -20,14 +20,14 @@ public class Funcao implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String funcao;
+    private String nome;
 
-    public String getFuncao() {
-        return funcao;
+    public String getNome() {
+        return nome;
     }
 
-    public void setFuncao(String funcao) {
-        this.funcao = funcao;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public Long getId() {
