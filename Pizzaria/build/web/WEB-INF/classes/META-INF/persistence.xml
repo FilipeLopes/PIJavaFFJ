@@ -10,7 +10,6 @@
     <class>br.com.pizzaria.entidade.Sabor</class>
     <class>br.com.pizzaria.entidade.Tamanho</class>
     <class>br.com.pizzaria.entidade.Borda</class>
-    <class>br.com.pizzaria.entidade.Funcao</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.hbm2ddl.auto" value="create-drop"/>

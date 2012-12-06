@@ -1,0 +1,35 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+  background-color:#000;
+  height:auto;
+}
+
+#principal {
+	margin-top:5px;
+	margin: 0px auto;
+	background-color:#F00;
+    width: 990px;
+	height:auto;
+}
+
+#topo {
+	background-color:#FF0;
+    width:990px;
+	height:150px;	
+}
+
+#banner {
+      width:700px;
+	  height:150px;
+	  float:right;
+	  background-color:#000;
+  } 
+
+#logo {
+      width:290px;
+	  height:150px;
+	  float:left;
+	  background-color:#639;
+} 
+

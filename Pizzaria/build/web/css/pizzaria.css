@@ -1,0 +1,64 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+    background-color:#FF0;
+    height:auto;
+}
+
+#principal {
+    margin:0px auto;
+    background-color:#000099;
+    width: 990px;
+    height: auto;
+}
+
+#top {
+    background-color:#00CCFF;
+    width:980px;
+    height:150px;	
+}
+
+#banner {
+    width:700px;
+    height:145px;
+    float:right;
+    background-color:#00FF00;
+} 
+
+#logo {
+    width:270px;
+    height:145px;
+    float:left;
+    background-color:#0000FF;
+} 
+
+#conteudo {
+    background-color:#F00;
+    width: 990px;
+    height: auto;
+    float: left;
+}
+
+#conteudoEsquerda {
+    background-color:#00FF00;
+    width: 650px;
+    height: 500px;
+    float: left;
+}
+
+#conteudoDireita {
+    background-color:#639;
+    width: 320px;
+    height: 500px;
+    float: left;
+    padding-left: 10px;
+}
+
+#rodape {
+    background-color:#0000FF;
+    width: 990px;
+    height: 45px;
+    float: left;
+}
+
+
