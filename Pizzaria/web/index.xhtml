@@ -35,10 +35,31 @@
             
             <div id="conteudo">
                 <div id="conteudoEsquerda">
-                
+                    <div id="video">
+                        <div id="chief">
+                            <img src="img/chef.jpg"/>
+                        </div>  
+                        <div id="videoP">
+                            <p:imageSwitch effect="fade">  
+                                <ui:repeat value="#{imgC.images}" var="image">  
+                                    <p:graphicImage value="img/#{image}" />  
+                                </ui:repeat>  
+                        </p:imageSwitch>
+                        </div>    
+                    </div>
                 </div>
                 <div id="conteudoDireita">
+                    <div id="menusDireita">
+                        <div id="cardapio">
+                         <img src="img/cardapio.png"/>
+                        </div>
+                        <div id="bebida">
+                         <img src="img/bebida.png"/>
+                        </div>
+                    </div>
+                    <div id="bannerDireita">
                     
+                    </div>
                 </div>
             </div>   
             

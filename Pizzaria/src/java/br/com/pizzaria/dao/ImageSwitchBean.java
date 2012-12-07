@@ -18,8 +18,9 @@ public class ImageSwitchBean {
   
     public ImageSwitchBean() {  
         images = new ArrayList<String>();  
-        images.add("aaaa.jpg");  
-        images.add("bbbb.jpg");    
+        images.add("1.png");  
+        images.add("2.png"); 
+        images.add("3.png");
     }  
   
     public List<String> getImages() {  
