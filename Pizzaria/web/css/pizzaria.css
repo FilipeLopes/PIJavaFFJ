@@ -15,22 +15,46 @@ body {
 #top {
     background-color:#00CCFF;
     width:980px;
-    height:150px;	
+    height:155px;	
 }
 
 #banner {
     width:700px;
-    height:145px;
-    float:right;
+    height:150px;
+    float:left;
     background-color:#00FF00;
 } 
 
 #logo {
-    width:270px;
-    height:145px;
+    width:275px;
+    height:150px;
     float:left;
     background-color:#0000FF;
 } 
+
+#menu {
+	height:40px;
+	background-color:#333;
+	margin-top:30px;
+	text-align:center;	
+	padding-top:20px;
+	font-size:18px;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+#menu a{
+	padding:10px;
+	color:#FFF;
+	text-decoration:none;
+        margin: 30px;
+}
+
+#menu a:hover {	
+	background:#F55510;
+	-moz-border-radius: 8px; /*Arredonda as bordas Para Firefox */
+	-webkit-border-radius: 8px; /*... Para Safari e Chrome */
+	border-radius: 8px; 	
+}
 
 #conteudo {
     background-color:#F00;
