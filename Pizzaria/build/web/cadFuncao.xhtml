@@ -3,15 +3,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       >
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<!--        <link href="css/custom-theme/jquery-ui-1.9.2.custom.css" rel="stylesheet" type="text/css" />-->
+        <!--        <link href="css/custom-theme/jquery-ui-1.9.2.custom.css" rel="stylesheet" type="text/css" />-->
         <link href="css/pizzaria.css" rel="stylesheet" type="text/css" />
         <title>Facelets Template</title>
-    
+
     </h:head>
 
     <h:body>
@@ -24,7 +25,7 @@
                     <img src="img/banner.jpg"/>
                 </div>
             </div>
-            
+
             <div id="menu">
                 <a href="index.faces">Home</a>
                 <a href="cadCliente.faces">Cadastro Clientes</a>
@@ -32,43 +33,41 @@
                 <a href="cadFuncao.faces">Cadastro Função</a>
                 <a href="index.faces">Contato</a>
             </div><!-- fim menu -->
-            
+
             <div id="conteudo">
-                <div id="conteudoEsquerda">
-                    <div id="video">
-                        <div id="chief">
-                            <img src="img/chef.jpg"/>
-                        </div>  
-                        <div id="videoP">
-                            <p:imageSwitch effect="fade">  
-                                <ui:repeat value="#{imgC.images}" var="image">  
-                                    <p:graphicImage value="img/#{image}" />  
-                                </ui:repeat>  
-                        </p:imageSwitch>
-                        </div>    
-                    </div>
+                <div id="conteudoEsquerdaCad">
+                    <h:form id="form_funcao">
+                        <p:toolbar>
+                            <p:toolbarGroup>
+                                <p:commandButton value="Pesquisar" image="ui-icon-search"
+                                                 action="#{funcaoC.limpaPesquisa()}" ajax="false" immediate="true"/>
+
+                                <p:commandButton value="Novo" image="ui-icon-folder-open"
+                                                 action="#" ajax="false" disabled="true"/>
+                            </p:toolbarGroup>
+                        </p:toolbar>
+                        <h:panelGrid id="painel" columns="2">
+                            <h:outputText  value="Nome da Função: " />
+                            <p:inputText id="nome" value="#{funcaoC.funcao.nome}" 
+                                         required="true" requiredMessage="Campo nome é obrigatorio! "/>
+
+                            <p:commandButton value="salvar" action="#{funcaoC.salvar()}" ajax="false" />
+                        </h:panelGrid>
+                    </h:form>
                 </div>
-                <div id="conteudoDireita">
-                    <div id="menusDireita">
-                        <div id="cardapio">
-                         <img src="img/cardapio.png"/>
-                        </div>
-                        <div id="bebida">
-                         <img src="img/bebida.png"/>
-                        </div>
-                    </div>
+                <div id="conteudoDireitaCad">
                     <div id="bannerDireita">
-                    
+
                     </div>
                 </div>
             </div>   
-            
+
             <div id="rodape">
-                
+
             </div>
         </div>
 
-        
+
     </h:body>
 
 </html>

@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <!--        <link href="css/custom-theme/jquery-ui-1.9.2.custom.css" rel="stylesheet" type="text/css" />-->
+        <link href="css/pizzaria.css" rel="stylesheet" type="text/css" />
+        <title>Facelets Template</title>
+
+    </h:head>
+
+    <h:body>
+        <div id="principal">
+            <div id="top">
+                <div id="logo">
+                    <img src="img/logo.png"/>
+                </div>    
+                <div id="banner">
+                    <img src="img/banner.jpg"/>
+                </div>
+            </div>
+
+            <div id="menu">
+                <a href="index.faces">Home</a>
+                <a href="cadCliente.faces">Cadastro Clientes</a>
+                <a href="pesqFuncao.faces">Pesquisa Funcao</a>
+                <a href="cadFuncao.faces">Cadastro Função</a>
+                <a href="index.faces">Contato</a>
+            </div><!-- fim menu -->
+
+            <div id="conteudo">
+                <div id="conteudoEsquerdaCad">
+                    <h:form id="form_funcao">
+                        <p:toolbar>
+                            <p:toolbarGroup id="funcaoToolbarG">
+                                <p:commandButton value="Pesquisar" image="ui-icon-search"
+                                                 action="#{funcaoC.limpaPesquisa()}" ajax="false"/>
+
+                                <p:commandButton value="Novo" image="ui-icon-folder-open"
+                                                 action="#{funcaoC.novoFuncao()}" 
+                                                 ajax="false"/>
+                            </p:toolbarGroup>
+                        </p:toolbar>
+
+                        <p:messages id="mensagens" showSummary="true" />
+                        <p:fieldset legend="Pesquisa" toggleable="true" 
+                                    style="width: auto;">
+                            <h:panelGrid columns="3" >
+                                <h:outputText value="Função:" />
+                                <p:inputText id="nome" 
+                                             value="#{funcaoC.funcao.nome}" >
+                                    <p:focus for="nome"/>
+                                </p:inputText>                           
+
+                                <p:commandButton value="Pesquisar" image="ui-icon-search"
+                                                 action="#{funcaoC.pesquisaLike()}"  
+                                                 update="tabelaFuncao"/>
+                            </h:panelGrid>
+                        </p:fieldset>
+
+                        <p:separator style="width: 100%; height: 5px; margin-top: 10px;"/> 
+
+                        <p:dataTable id="tabelaFuncao" value="#{funcaoC.model}"
+                                     var="funcao" paginator="true" rows="5" 
+                                     emptyMessage="Nenhum valor encontrado">
+                            <f:facet name="header">
+                                <h:outputText value="Listando Cidade(s)"/>
+                            </f:facet>
+                            <p:column>
+                                <f:facet name="header">Função</f:facet>
+                                <h:outputText value="#{funcao.nome}" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">Alterar/Excluir</f:facet>
+                                <p:commandLink  action="#{funcaoC.alterar()}"
+                                                value="Alterar" ajax="false"/> -
+                                <p:commandLink  value="Excluir" ajax="false"
+                                                action="#{funcaoC.excluir()}"/>
+                            </p:column>
+
+                        </p:dataTable>
+
+                    </h:form>
+                </div>
+                <div id="conteudoDireitaCad">
+                    <div id="bannerDireita">
+
+                    </div>
+                </div>
+            </div>   
+
+            <div id="rodape">
+
+            </div>
+        </div>
+
+
+    </h:body>
+
+</html>
+
