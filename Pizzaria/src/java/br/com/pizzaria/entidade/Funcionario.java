@@ -18,7 +18,7 @@ import javax.persistence.ManyToOne;
  * @author Aluno
  */
 @Entity
-public class Funcionario  extends Pessoa{
+public class Funcionario extends Pessoa{
     
     @Column(length=50, nullable=false)
     private String cracha;
