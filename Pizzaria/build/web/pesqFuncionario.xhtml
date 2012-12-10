@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <!--        <link href="css/custom-theme/jquery-ui-1.9.2.custom.css" rel="stylesheet" type="text/css" />-->
         <link href="css/pizzaria.css" rel="stylesheet" type="text/css" />
-        <title>Facelets Template</title>
+        <title>Pesquisa de Funcionário</title>
 
     </h:head>
 
@@ -35,14 +35,14 @@
 
             <div id="conteudo">
                 <div id="conteudoEsquerdaCad">
-                    <h:form id="form_funcao">
+                    <h:form id="form_funcionario">
                         <p:toolbar>
-                            <p:toolbarGroup id="funcaoToolbarG">
+                            <p:toolbarGroup id="funcionarioToolbarG">
                                 <p:commandButton value="Pesquisar" image="ui-icon-search"
-                                                 action="#{funcaoC.limpaPesquisa()}" ajax="false"/>
+                                                 action="#{funcionarioC.limpaPesquisa()}" ajax="false"/>
 
                                 <p:commandButton value="Novo" image="ui-icon-folder-open"
-                                                 action="#{funcaoC.novoFuncao()}" 
+                                                 action="#{funcionarioC.novoFuncionario()}" 
                                                  ajax="false"/>
                             </p:toolbarGroup>
                         </p:toolbar>
@@ -51,36 +51,36 @@
                         <p:fieldset legend="Pesquisa" toggleable="true" 
                                     style="width: auto;">
                             <h:panelGrid columns="3" >
-                                <h:outputText value="Função:" />
+                                <h:outputText value="Nome:" />
                                 <p:inputText id="nome" 
-                                             value="#{funcaoC.funcao.nome}" >
+                                             value="#{funcionarioC.pessoa.nome}" >
                                     <p:focus for="nome"/>
                                 </p:inputText>                           
 
                                 <p:commandButton value="Pesquisar" image="ui-icon-search"
-                                                 action="#{funcaoC.pesquisaLike()}"  
-                                                 update="tabelaFuncao"/>
+                                                 action="#{funcionarioC.pesquisaLike()}"  
+                                                 update="tabelaFuncionario"/>
                             </h:panelGrid>
                         </p:fieldset>
 
                         <p:separator style="width: 100%; height: 5px; margin-top: 10px;"/> 
 
-                        <p:dataTable id="tabelaFuncao" value="#{funcaoC.model}"
-                                     var="funcao" paginator="true" rows="5" 
+                        <p:dataTable id="tabelaFuncionario" value="#{funcionarioC.model}"
+                                     var="funcionario" paginator="true" rows="5" 
                                      emptyMessage="Nenhum valor encontrado">
                             <f:facet name="header">
-                                <h:outputText value="Listando Funções"/>
+                                <h:outputText value="Listando Funcionário(s)"/>
                             </f:facet>
                             <p:column>
-                                <f:facet name="header">Função</f:facet>
-                                <h:outputText value="#{funcao.nome}" />
+                                <f:facet name="header">Nome</f:facet>
+                                <h:outputText value="#{funcionario.nome}" />
                             </p:column>
                             <p:column>
                                 <f:facet name="header">Alterar/Excluir</f:facet>
-                                <p:commandLink  action="#{funcaoC.alterar()}"
+                                <p:commandLink  action="#{funcionarioC.alterar()}"
                                                 value="Alterar" ajax="false"/> -
                                 <p:commandLink  value="Excluir" ajax="false"
-                                                action="#{funcaoC.excluir()}"/>
+                                                action="#{funcionarioC.excluir()}"/>
                             </p:column>
 
                         </p:dataTable>

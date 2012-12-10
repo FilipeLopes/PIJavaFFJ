@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <!--        <link href="css/custom-theme/jquery-ui-1.9.2.custom.css" rel="stylesheet" type="text/css" />-->
         <link href="css/pizzaria.css" rel="stylesheet" type="text/css" />
-        <title>Facelets Template</title>
+        <title>Cadastro de Funcioário</title>
 
     </h:head>
 
@@ -35,22 +35,36 @@
 
             <div id="conteudo">
                 <div id="conteudoEsquerdaCad">
-                    <h:form id="form_funcao">
+                    <h:form id="form_funcionario">
                         <p:toolbar>
                             <p:toolbarGroup>
                                 <p:commandButton value="Pesquisar" image="ui-icon-search"
-                                                 action="#{funcaoC.limpaPesquisa()}" ajax="false" immediate="true"/>
+                                                 action="#{funcionarioC.limpaPesquisa()}" ajax="false" immediate="true"/>
 
                                 <p:commandButton value="Novo" image="ui-icon-folder-open"
                                                  action="#" ajax="false" disabled="true"/>
                             </p:toolbarGroup>
                         </p:toolbar>
                         <h:panelGrid id="painel" columns="2">
-                            <h:outputText  value="Nome da Função: " />
-                            <p:inputText id="nome" value="#{funcaoC.funcao.nome}" 
+                            <h:outputText  value="Nome: " />
+                            <p:inputText id="nome" value="#{funcionarioC.pessoa.nome}" 
                                          required="true" requiredMessage="Campo nome é obrigatorio! "/>
 
-                            <p:commandButton value="salvar" action="#{funcaoC.salvar()}" ajax="false" />
+                            <h:outputText  value="Nascimento: " />
+                            <p:inputText id="nascimento" value="#{funcionarioC.pessoa.nascimento}" 
+                                         required="true" requiredMessage="Campo nascimento é obrigatorio! "/>
+
+                            <h:outputText  value="Crachá: " />
+                            <p:inputText id="cracha" value="#{funcionarioC.funcionario.cracha}" 
+                                         required="true" requiredMessage="Campo crachá é obrigatorio! "/>
+
+                            <h:outputText  value="Função:" />
+                            <p:selectOneMenu value="#{funcionarioC.funcao.nome}" effect="fold" 
+                                             required="true" requiredMessage="Função obrigatória">  
+                                <f:selectItem itemLabel="Selecione um item" itemValue="" />  
+                                <f:selectItems value="#{funcionarioC.comboFuncao}" />  
+                            </p:selectOneMenu>
+                            <p:commandButton value="salvar" action="#{funcionarioC.salvar()}" ajax="false" />
                         </h:panelGrid>
                     </h:form>
                 </div>

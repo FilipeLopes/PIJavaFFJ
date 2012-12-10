@@ -7,6 +7,7 @@ package br.com.pizzaria.controle;
 import br.com.pizzaria.dao.*;
 import br.com.pizzaria.entidade.Funcao;
 import br.com.pizzaria.entidade.Funcionario;
+import br.com.pizzaria.entidade.Pessoa;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -26,9 +27,21 @@ import javax.faces.model.SelectItem;
 public class FuncionarioControle {
 
     private Funcionario funcionario;
+    private Pessoa pessoa;
     private FuncionarioDAO funcionarioDAO;
     private DataModel model;
     private Funcao funcao;
+
+    public Pessoa getPessoa() {
+        if(pessoa == null){
+            pessoa = new Pessoa();
+        }
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
+    }
 
     public Funcionario getFuncionario() {
         if(funcionario == null){
