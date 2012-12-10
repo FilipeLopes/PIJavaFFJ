@@ -5,11 +5,14 @@
 package br.com.pizzaria.dao;
 
 import br.com.pizzaria.entidade.Borda;
+import java.util.List;
 
 /**
  *
  * @author Aluno
  */
 public interface BordaDAO extends BaseDAO<Borda, Long>{
+    
+    List<Borda> pesquisaLikeBorda(String borda);
     
 }

@@ -38,12 +38,12 @@ body {
 	margin-top:0px;
 	text-align:center;	
 	padding-top:20px;
-	font-size:18px;
+	font-size:13px;
 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
 #menu a{
-	padding:10px;
+	padding:5px;
 	color:#FFF;
 	text-decoration:none;
         margin: 30px;

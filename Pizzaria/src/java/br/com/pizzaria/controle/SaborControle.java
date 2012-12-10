@@ -7,17 +7,19 @@ package br.com.pizzaria.controle;
 import br.com.pizzaria.dao.SaborDAO;
 import br.com.pizzaria.dao.SaborDAOImp;
 import br.com.pizzaria.entidade.Sabor;
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
+import javax.faces.model.ListDataModel;
 
 /**
  *
  * @author Aluno
  */
-@ManagedBean
+@ManagedBean(name="saborCont")
 @SessionScoped
 public class SaborControle {
     
@@ -34,14 +36,14 @@ public class SaborControle {
         this.model = model;
     }
 
-    public Sabor getCidade() {
+    public Sabor getSabor() {
      if(sabor == null){
             sabor = new Sabor();
         }
         return sabor;
     }
 
-    public void setCidade(Sabor sabor) {
+    public void setSabor(Sabor sabor) {
         this.sabor = sabor;
     }
 
@@ -60,12 +62,12 @@ public class SaborControle {
             saborDAO.salva(sabor);            
             context.addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO,
-                    "Sabor salva com sucesso!", ""));
+                    "Sabor salvo com sucesso!", ""));
         } else {
             saborDAO.altera(sabor);
             context.addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO,
-                    "Sabor alterada com sucesso!", ""));
+                    "Sabor alterado com sucesso!", ""));
         }
         limpar();
         return "pesqSabor";
@@ -79,7 +81,7 @@ public class SaborControle {
             saborDAO.remove(sabor);
             context.addMessage(null, 
                     new FacesMessage(FacesMessage.SEVERITY_INFO,
-                    "Sabor excluída com sucesso!", ""));
+                    "Sabor excluído com sucesso!", ""));
         } catch (Exception e) {
             context.addMessage(null, 
                     new FacesMessage(FacesMessage.SEVERITY_ERROR,
@@ -92,11 +94,11 @@ public class SaborControle {
     
     public String alterar() {
         sabor = (Sabor) model.getRowData();
-        setCidade(sabor);
+        setSabor(sabor);
         return "cadSabor";
     }
     
-    public String novoCidade() {        
+    public String novoSabor() {        
         sabor = new Sabor();
         return "cadSabor";
     }
@@ -108,5 +110,11 @@ public class SaborControle {
     public String limpaPesquisa() {
         limpar();
         return "pesqSabor";
+    }
+    
+    public void pesquisaLikeSabor() {
+        saborDAO = new SaborDAOImp();
+        List<Sabor> sabores = saborDAO.pesquisaLikeSabor(sabor.getSabor());
+        model = new ListDataModel(sabores);
     }
 }
