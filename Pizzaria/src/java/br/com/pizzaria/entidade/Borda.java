@@ -23,6 +23,9 @@ public class Borda implements Serializable {
     private Long id;
     
     @Column(nullable = false, length=80)
+    private String nome;
+    
+    @Column(nullable = false, length=80)
     private float preco;
 
     public Long getId() {
@@ -56,6 +59,14 @@ public class Borda implements Serializable {
     @Override
     public String toString() {
         return "br.com.pizzaria.entidade.Borda[ id=" + id + " ]";
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public float getPreco() {

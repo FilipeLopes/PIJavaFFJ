@@ -7,17 +7,19 @@ package br.com.pizzaria.controle;
 import br.com.pizzaria.dao.BordaDAO;
 import br.com.pizzaria.dao.BordaDAOImp;
 import br.com.pizzaria.entidade.Borda;
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
+import javax.faces.model.ListDataModel;
 
 /**
  *
  * @author Aluno
  */
-@ManagedBean
+@ManagedBean(name="bordaCont")
 @SessionScoped
 public class BordaControle {  
     
@@ -33,14 +35,14 @@ public class BordaControle {
         this.model = model;
     }
 
-    public Borda getCidade() {
+    public Borda getBorda() {
      if(borda == null){
             borda = new Borda();
         }
         return borda;
     }
 
-    public void setCidade(Borda borda) {
+    public void setBorda(Borda borda) {
         this.borda = borda;
     }
 
@@ -91,11 +93,11 @@ public class BordaControle {
     
     public String alterar() {
         borda = (Borda) model.getRowData();
-        setCidade(borda);
+        setBorda(borda);
         return "cadBorda";
     }
     
-    public String novoCidade() {        
+    public String novoBorda() {        
         borda = new Borda();
         return "cadBorda";
     }
@@ -107,5 +109,11 @@ public class BordaControle {
     public String limpaPesquisa() {
         limpar();
         return "pesqBorda";
+    }
+    
+    public void pesquisaLikeBorda() {
+        bordaDAO = new BordaDAOImp();
+        List<Borda> bordas = bordaDAO.pesquisaLikeBorda(borda.getNome());
+        model = new ListDataModel(bordas);
     }
 }
