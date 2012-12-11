@@ -41,4 +41,13 @@ public class FuncionarioDAOImp extends BaseDAOImp<Funcionario, Long>
         List<Funcionario> funcionarios = query.list();
         session.close();
         return funcionarios;    }
+
+    @Override
+    public String ultimoCracha() {
+        session = (Session) FabricaSessao.abreConexao().openSession();
+        Query query = session.createQuery("Select max(f.cracha) from Funcionario f ");
+        String cracha = (String) query.uniqueResult();
+        session.close();
+        return cracha;
+    }
 }

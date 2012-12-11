@@ -14,4 +14,6 @@ import java.util.List;
 public interface FuncionarioDAO extends BaseDAO<Funcionario, Long> {
 
     List<Funcionario> pesquisaLikeNome(String nome);
+    
+    public String ultimoCracha();
 }

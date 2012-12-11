@@ -37,7 +37,7 @@
                     <h:form id="formSabor">
 
                 <p:toolbar>
-                    <p:toolbarGroup align="center" style="height: 25px">
+                    <p:toolbarGroup>
                         <p:commandButton value="Pesquisar" image="ui-icon-search" 
                                          action="#{saborCont.limpaPesquisa()}" ajax="false"/>
                         <p:commandButton value="Novo" image="ui-icon-folder-open" 
@@ -45,11 +45,9 @@
                     </p:toolbarGroup>
                 </p:toolbar>
 
-                <p:separator style="width: 100%; height: 1px; margin-top: 10px;"/>   
-
                 <p:messages id="mensagens" showSummary="true" />
                     <h:panelGrid columns="2">
-                        <p:fieldset toggleable="true" style="width: 400px;">
+                        <p:fieldset toggleable="true" style="width: auto;">
                         <h:outputText value="Nome: "/>
                         <p:inputText id="sabor" value="#{saborCont.sabor.sabor}" size="">
                             <p:focus for="sabor"/>
