@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <!--        <link href="css/custom-theme/jquery-ui-1.9.2.custom.css" rel="stylesheet" type="text/css" />-->
+        <link href="css/pizzaria.css" rel="stylesheet" type="text/css" />
+        <title>Mostra Pizza</title>
+
+    </h:head>
+    <h:body>
+        <div id="principal">
+            <div id="top">
+                <div id="logo">
+                    <img src="img/logo.png"/>
+                </div>    
+                <div id="banner">
+                    <img src="img/banner.jpg"/>
+                </div>
+            </div>
+
+            <div id="menu">
+                <a href="index.faces">Home</a>
+                <a href="cadSabor.faces">História</a>
+                <a href="index.html">Cardápio</a>
+                <a href="index.html">Localização</a>
+                <a href="index.html">Contato</a>
+            </div><!-- fim menu -->
+
+            <div id="conteudo">
+                <div id="conteudoEsquerdaCad">
+                    <h:form id="pesq_bebida">
+                        <p:toolbar>
+                            <p:toolbarGroup align="left" style="height: 25px;">
+                                <p:commandButton value="Pesquisar" image="ui-icon-search" action="#" ajax="false" style="margin: 0px;" immediate="true"/>
+                                <p:commandButton value="Novo" image="ui-icon-folder-open" action="#" ajax="false" style="margin: 0px;" disabled="true"/>
+                            </p:toolbarGroup>
+                        </p:toolbar>
+                        <p:separator style="width: 100%; height: 5px; margin: 5px 0px;"/>
+                        <p:messages id="mensagem" showSummary="true"/>
+                    </h:form>
+                    
+                    <h:form id="formBebida">
+
+                <p:toolbar>
+                    <p:toolbarGroup align="center" style="height: 25px">
+                        <p:commandButton value="Pesquisar" image="ui-icon-search" 
+                                         action="#{bebidaControle.limpaPesquisa()}" ajax="false"/>
+                        <p:commandButton value="Novo" image="ui-icon-folder-open" 
+                                         action="#{bebidaControle.novoBebida()}" ajax="false"/>
+                    </p:toolbarGroup>
+                </p:toolbar>
+
+                <p:separator style="width: 100%; height: 1px; margin-top: 10px;"/>   
+
+                <p:messages id="mensagens" showSummary="true" />
+                    <h:panelGrid columns="2">
+                        <p:fieldset toggleable="true" style="width: 400px;">
+                        <h:outputText value="Nome: "/>
+                        <p:inputText id="nome" value="#{bebidaControle.bebida.nome}" size="">
+                            <p:focus for="nome"/>
+                        </p:inputText>
+                        <p:commandButton value="Pesquisar" image="ui-icon-search" 
+                                         action="#{bebidaControle.pesquisaLike()}" update="tabelaBebida"/>
+
+                </p:fieldset>
+                    </h:panelGrid>
+
+                <p:separator style="width: 100%; height: 1px; margin-top: 10px;"/>
+
+                <p:dataTable id="tabelaBebida" 
+                             value="#{bebidaControle.model}" var="c" paginator="true" 
+                             rows="5" emptyMessage="Nenhum valor encontrado">
+                    <f:facet name="header">
+                        <h:outputText value="Listando Bebidas" />
+                    </f:facet>
+
+                    <p:column>
+                        <f:facet name="header">Sabor</f:facet>
+                        <h:outputText value="#{c.nome}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">Preço</f:facet>
+                        <h:outputText value="#{c.preco}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">Alterar - Excluir</f:facet>
+                        <p:commandLink action="#{bebidaControle.alterar()}" value="Alterar " ajax="false" />
+                        <p:commandLink action="#{bebidaControle.excluir()}" value=" Excluir" ajax="false" />
+                    </p:column>
+
+                </p:dataTable>
+
+            </h:form>
+                </div>
+                <div id="conteudoDireitaCad">
+                    <div id="bannerDireita">
+
+                    </div>
+                </div>
+            </div>   
+
+            <div id="rodape">
+
+            </div>
+        </div>
+    </h:body>
+</html>

@@ -6,7 +6,7 @@
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/pizzaria?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.connection.password">root</property>
+    <!--<property name="hibernate.connection.password">root</property>-->
         <mapping class="br.com.pizzaria.entidade.Pessoa"/>
         <mapping class="br.com.pizzaria.entidade.Usuario"/>
         <mapping class="br.com.pizzaria.entidade.Endereco"/>
@@ -15,5 +15,7 @@
         <mapping class="br.com.pizzaria.entidade.Funcao"/>
         <mapping class="br.com.pizzaria.entidade.Sabor"/>
         <mapping class="br.com.pizzaria.entidade.Borda"/>
+        <mapping class="br.com.pizzaria.entidade.Cliente"/>
+        <mapping class="br.com.pizzaria.entidade.Bebida"/>
   </session-factory>
 </hibernate-configuration>

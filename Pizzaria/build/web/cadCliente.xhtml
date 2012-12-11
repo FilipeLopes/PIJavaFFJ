@@ -4,7 +4,7 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      >
+      xmlns:f="http://java.sun.com/jsf/core">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -26,15 +26,57 @@
             </div>
             
             <div id="menu">
+                <a href="index.faces">Home</a>
                 <a href="cadCliente.faces">Cadastro Clientes</a>
-                <a href="pesqFuncao.faces">Pesquisa Funcao</a>
-                <a href="index.faces">Localização</a>
-                <a href="pesqFuncionario.faces">Funcionário</a>
+                <a href="index.html">Cardápio</a>
+                <a href="index.html">Localização</a>
+                <a href="index.html">Contato</a>
             </div><!-- fim menu -->
             
             <div id="conteudo">
                 <div id="conteudoEsquerdaCad">
-                   
+                    <h:form id="cad_cliente">          
+                            <p:toolbar>
+                                <p:toolbarGroup>
+                                    <p:commandButton value="Pesquisar" image="ui-icon-search"
+                                         action="#{clienteC.limpaPesquisa()}" ajax="false" immediate="true"/>
+
+                                    <p:commandButton value="Novo" image="ui-icon-folder-open"
+                                         action="#" ajax="false" disabled="true"/>
+                                </p:toolbarGroup>
+                            </p:toolbar>
+                            <p:panelGrid columns="5">
+                              <p:fieldset legend="Dados:">
+                               <h:outputText  value="Nome:" />
+                               <p:inputText id="nome" value="#{clienteC.cliente.nome}" 
+                                 required="true" requiredMessage="Campo nome é obrigatorio! "/>
+                               <h:outputText  value="Telefone:" />
+                               <p:inputText id="telefone" value="#{clienteC.cliente.telefone}" 
+                                 required="true" requiredMessage="Campo nome é obrigatorio! "/>
+                              </p:fieldset>
+                              <p:fieldset legend="Endereço:">
+                               <h:outputText  value="Rua:" />
+                               <p:inputText id="rua" value="#{clienteC.endereco.rua}" 
+                                 required="true" requiredMessage="Campo nome é obrigatorio! "/>
+                               <h:outputText  value="Bairro:" />
+                               <p:inputText id="bairro" value="#{clienteC.endereco.bairro}" 
+                                 required="true" requiredMessage="Campo bairro é obrigatorio! "/>
+                               <h:outputText  value="Numero:" />
+                               <p:inputText id="numero" value="#{clienteC.endereco.numero}" 
+                                 required="true" requiredMessage="Campo numero é obrigatorio! "/>
+                               <h:outputText  value="Cidade:" />
+                               <p:inputText id="cidade" value="#{clienteC.endereco.cidade}" 
+                                 required="true" requiredMessage="Campo cidade é obrigatorio! "/>
+                               <h:outputText  value="Complemento:" />
+                               <p:inputText id="complemento" value="#{clienteC.endereco.complemento}" 
+                                 required="true" requiredMessage="Campo complemento é obrigatorio! "/>
+                               </p:fieldset>
+                            </p:panelGrid>
+                    <p:commandButton value="salvar" action="#{clienteC.salvar()}" ajax="false" />
+                    </h:form>
+                    
+                    
+                    
                 </div>
                 <div id="conteudoDireitaCad">
                     <div id="bannerDireita">
