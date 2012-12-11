@@ -45,13 +45,15 @@
                                                  action="#" ajax="false" disabled="true"/>
                             </p:toolbarGroup>
                         </p:toolbar>
-                        <h:panelGrid id="painel" columns="2">
-                            <h:outputText  value="Nome da Função: " />
-                            <p:inputText id="nome" value="#{funcaoC.funcao.nome}" 
-                                         required="true" requiredMessage="Campo nome é obrigatorio! "/>
+                        <p:fieldset toggleable="true" style="width: 400px; margin: 0 auto;">
+                            <h:panelGrid id="painel" columns="2">
+                                <h:outputText  value="Nome da Função: " />
+                                <p:inputText id="nome" value="#{funcaoC.funcao.nome}" 
+                                             required="true" requiredMessage="Campo nome é obrigatorio! "/>
 
-                            <p:commandButton value="salvar" action="#{funcaoC.salvar()}" ajax="false" />
-                        </h:panelGrid>
+                                <p:commandButton value="salvar" action="#{funcaoC.salvar()}" ajax="false" />
+                            </h:panelGrid>
+                        </p:fieldset>
                     </h:form>
                 </div>
                 <div id="conteudoDireitaCad">

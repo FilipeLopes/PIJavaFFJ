@@ -9,6 +9,8 @@ import br.com.pizzaria.entidade.Funcao;
 import br.com.pizzaria.entidade.Funcionario;
 import br.com.pizzaria.entidade.Pessoa;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -27,21 +29,9 @@ import javax.faces.model.SelectItem;
 public class FuncionarioControle {
 
     private Funcionario funcionario;
-    private Pessoa pessoa;
     private FuncionarioDAO funcionarioDAO;
     private DataModel model;
     private Funcao funcao;
-
-    public Pessoa getPessoa() {
-        if(pessoa == null){
-            pessoa = new Pessoa();
-        }
-        return pessoa;
-    }
-
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
-    }
 
     public Funcionario getFuncionario() {
         if(funcionario == null){
@@ -85,6 +75,7 @@ public class FuncionarioControle {
         FacesContext context = FacesContext.getCurrentInstance();
         funcionarioDAO = new FuncionarioDAOImp();
         if (funcionario.getId() == null) {
+            funcionario.setCracha(geraCracha());
             funcionario.setFuncao(funcao);
             funcionarioDAO.salva(funcionario);
 
@@ -100,7 +91,19 @@ public class FuncionarioControle {
         limpar();
         return "pesqFuncionario";
     }
-
+    
+    private String geraCracha(){
+        funcionarioDAO = new FuncionarioDAOImp();
+        String cracha = funcionarioDAO.ultimoCracha();
+        
+        Calendar cal = Calendar.getInstance();
+        int ano = cal.get(Calendar.YEAR);//2012023
+        String crachaBanco = cracha.substring(4,7);
+        cracha = ano + (crachaBanco + 1);
+        System.out.println("cracha " + cracha);
+        return cracha;
+    }
+    
     public String excluir() {
         FacesContext context = FacesContext.getCurrentInstance();
         try {

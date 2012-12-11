@@ -13,6 +13,38 @@
         <link href="css/pizzaria.css" rel="stylesheet" type="text/css" />
         <title>Cadastro de Funcioário</title>
 
+        <script type="text/javascript">
+         
+            PrimeFaces.locales['pt'] = {    
+                closeText: 'Fechar',    
+                prevText: 'Anterior',    
+                nextText: 'Próximo',    
+                currentText: 'Começo',    
+                monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],    
+                monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun', 'Jul','Ago','Set','Out','Nov','Dez'],    
+                dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],    
+                dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'],    
+                dayNamesMin: ['D','S','T','Q','Q','S','S'],    
+                weekHeader: 'Semana',    
+                firstDay: 1,    
+                isRTL: false,    
+                showMonthAfterYear: false,    
+                yearSuffix: '',    
+                timeOnlyTitle: 'Só Horas',    
+                timeText: 'Tempo',    
+                hourText: 'Hora',    
+                minuteText: 'Minuto',    
+                secondText: 'Segundo',    
+                currentText: 'Data Atual',    
+                ampm: false,    
+                month: 'Mês',    
+                week: 'Semana',    
+                day: 'Dia',    
+                allDayText : 'Todo Dia'    
+            }; 
+            
+        </script>
+
     </h:head>
 
     <h:body>
@@ -45,27 +77,27 @@
                                                  action="#" ajax="false" disabled="true"/>
                             </p:toolbarGroup>
                         </p:toolbar>
-                        <h:panelGrid id="painel" columns="2">
-                            <h:outputText  value="Nome: " />
-                            <p:inputText id="nome" value="#{funcionarioC.pessoa.nome}" 
-                                         required="true" requiredMessage="Campo nome é obrigatorio! "/>
+                        <p:fieldset toggleable="true" style="width: 400px; margin: 0 auto;">
+                            <h:panelGrid id="painel" columns="2">
+                                <h:outputText  value="Nome: " />
+                                <p:inputText id="nome" value="#{funcionarioC.funcionario.nome}" 
+                                             required="true" requiredMessage="Campo nome é obrigatorio! "/>
 
-                            <h:outputText  value="Nascimento: " />
-                            <p:inputText id="nascimento" value="#{funcionarioC.pessoa.nascimento}" 
-                                         required="true" requiredMessage="Campo nascimento é obrigatorio! "/>
+                                <h:outputText value="Nascimento:"/>
+                                <p:calendar locale="pt" showButtonPanel="true" navigator="true" id="ptCal" 
+                                            value="#{funcionarioC.funcionario.nascimento}" pattern="dd/MM/yyyy"
+                                            required="true" requiredMessage="nascimento obrigatório" yearRange="1950"/>
 
-                            <h:outputText  value="Crachá: " />
-                            <p:inputText id="cracha" value="#{funcionarioC.funcionario.cracha}" 
-                                         required="true" requiredMessage="Campo crachá é obrigatorio! "/>
+                                <h:outputText  value="Função: " />
+                                <p:selectOneMenu id="comboEstado" value="#{funcionarioC.funcao.id}" effect="fold" 
+                                                 required="true" requiredMessage="estado obrigatório">  
+                                    <f:selectItem itemLabel="Selecione um item" itemValue="" />  
+                                    <f:selectItems value="#{funcionarioC.comboFuncao}" />  
+                                </p:selectOneMenu>
 
-                            <h:outputText  value="Função:" />
-                            <p:selectOneMenu value="#{funcionarioC.funcao.nome}" effect="fold" 
-                                             required="true" requiredMessage="Função obrigatória">  
-                                <f:selectItem itemLabel="Selecione um item" itemValue="" />  
-                                <f:selectItems value="#{funcionarioC.comboFuncao}" />  
-                            </p:selectOneMenu>
-                            <p:commandButton value="salvar" action="#{funcionarioC.salvar()}" ajax="false" />
-                        </h:panelGrid>
+                                <p:commandButton value="salvar" action="#{funcionarioC.salvar()}" ajax="false" />
+                            </h:panelGrid>
+                        </p:fieldset>
                     </h:form>
                 </div>
                 <div id="conteudoDireitaCad">
