@@ -71,6 +71,7 @@ public class FuncaoControle {
                     "Função alterada com sucesso!", ""));
         }
         limpar();
+        
         return "pesqFuncao";
     }
 
@@ -93,10 +94,11 @@ public class FuncaoControle {
 
     }
 
-    public void pesquisaLike() {
+    public String pesquisaLike() {
         funcaoDAO = new FuncaoDAOImp();
         List<Funcao> funcaos = funcaoDAO.pesquisaLikeNome(funcao.getNome());
         model = new ListDataModel(funcaos);
+        return "";
     }
 
     public String alterar() {
@@ -112,6 +114,7 @@ public class FuncaoControle {
 
     private void limpar() {
         funcao = null;
+        model = null;
     }
 
     public String limpaPesquisa() {

@@ -58,8 +58,7 @@
                                     </p:inputText>                           
 
                                     <p:commandButton value="Pesquisar" image="ui-icon-search"
-                                                     action="#{funcaoC.pesquisaLike()}"  
-                                                     update="tabelaFuncao"/>
+                                                     update="@form" actionListener="#{funcaoC.pesquisaLike()}" />
                                 </h:panelGrid>
                             </p:fieldset>
                         </h:panelGrid>
